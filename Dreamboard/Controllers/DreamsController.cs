@@ -44,5 +44,22 @@ namespace Dreamboard.Controllers
             return Created($"dreams/{dream.Id}", dream);
         }
 
+        [HttpPut("{id}")]
+        public IActionResult EditDream(int id, Dreams dream)
+        {
+            var dreamToEdit = _repo.GetById(id);
+            if (dreamToEdit == null) return NotFound($"Unable to find Dream with id {id} to edit");
+
+            var updateDream = _repo.Update(id, dream);
+            return Ok(updateDream);
+        }
+
+        [HttpDelete("{id}")]
+        public IActionResult DeleteDream(int id)
+        {
+            _repo.Delete(id);
+            return Ok($"Your dream has been permanently deleted");
+
+        }
     }
 }

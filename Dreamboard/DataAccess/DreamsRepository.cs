@@ -55,5 +55,32 @@ namespace Dreamboard.DataAccess
 
             dream.Id = id;
         }
+
+        internal object Update(int id, Dreams dream)
+        {
+            using var db = new SqlConnection(_connectionString);
+
+            var sql = @"UPDATE [dbo].[Dreams]
+                            SET [name] = @name
+                               ,[image] = @image
+                            Output inserted.*
+                            Where Id = @id";
+
+            dream.Id = id;
+            var updatedDream = db.QuerySingleOrDefault<Dreams>(sql, dream);
+
+            return updatedDream;
+        }
+
+        internal void Delete(int id)
+        {
+            using var db = new SqlConnection(_connectionString);
+
+            var sql = @"DELETE
+                        FROM [dbo].[Dreams]
+                        Where Id = @id";
+
+            db.Execute(sql, new { id });
+        }
     }
 }
