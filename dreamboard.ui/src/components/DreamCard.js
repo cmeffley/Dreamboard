@@ -20,6 +20,6 @@ export function DreamCard({ ...dreamInfo }) {
 
 DreamCard.propTypes = {
   dreamInfo: PropTypes.object
-}
+};
 
 export default DreamCard;
