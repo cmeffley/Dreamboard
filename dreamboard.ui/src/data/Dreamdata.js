@@ -2,9 +2,9 @@ import axios from 'axios';
 
 const dbURL = 'https://localhost:44363';
 
-const getAllDreams = () => new Promise((reject) => {
+const getAllDreams = () => new Promise((resolve, reject) => {
   axios.get(`${dbURL}/dreams`)
-    .then((response) => console.warn(response))
+    .then((response) => resolve(response.data))
     .catch((error) => reject(error));
 });
 
