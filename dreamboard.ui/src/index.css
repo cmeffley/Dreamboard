@@ -7,6 +7,10 @@
   -moz-osx-font-smoothing: grayscale;
 } */
 
+#cardDiv {
+  height: 500px;
+  width: 500px;
+}
 
 #cardImage {
   height: 250px;
