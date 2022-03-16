@@ -28,19 +28,20 @@ export function DreamCard({ setAllDreams, ...dreamInfo }) {
 
   return (
     <div>
-      <Card>
-        <CardBody>
-          <CardText>{dreamInfo.name}</CardText>
+      <Card id='card'>
+        <CardText>{dreamInfo.name}</CardText>
+          <CardBody>
           <CardImg id='cardImage' src={dreamInfo.image} alt={dreamInfo.name}/>
-        </CardBody>
+          <br />
           <Button onClick={() => handleClick('edit')}>Edit</Button>
           <Button onClick={() => handleClick('delete')}>Delete</Button>
+          </CardBody>
         {editing && <DreamForm 
           formTitle='Edit Board'
           {...dreamInfo}
           setEditing={setEditing}
           setAllDreams={setAllDreams}
-        />}
+          />}
       </Card>
     </div>
   )

@@ -7,12 +7,26 @@
   -moz-osx-font-smoothing: grayscale;
 } */
 
+/* #mainDiv {
+  display: flex;
+  flex-flow: column wrap;
+  border: solid red 5px;
+} */
+
 #cardDiv {
-  height: 500px;
-  width: 500px;
+  display: flex;
+  flex-flow: row wrap;
+  /* justify-content: center; */
+  position: absolute;
+}
+
+#card {
+  width: 300px;
+  height: 300px;
 }
 
 #cardImage {
-  height: 250px;
-  width: 250px;
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
 }
