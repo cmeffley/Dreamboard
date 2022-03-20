@@ -9,7 +9,7 @@ import { addDream, updateDream } from '../data/Dreamdata';
 
 export function DreamForm({
   formTitle,
-  setEditing,
+  setModal,
   setAllDreams,
   openForm,
   setOpenForm,
@@ -31,7 +31,7 @@ export function DreamForm({
     e.preventDefault();
     if (dreamInfo.id) {
       updateDream(newDream.id, newDream).then((response) => setAllDreams(response));
-      setEditing(false);
+      setModal(false);
     } else {
       addDream(newDream).then((response) => setAllDreams(response));
       setOpenForm(!openForm);
@@ -69,7 +69,7 @@ DreamForm.propTypes = {
   dreamInfo: PropTypes.object,
   setAllDreams: PropTypes.func,
   formTitle: PropTypes.string,
-  setEditing: PropTypes.func,
+  setModal: PropTypes.func,
   openForm: PropTypes.bool,
   setOpenForm: PropTypes.func
 };
