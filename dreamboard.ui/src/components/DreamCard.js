@@ -2,21 +2,26 @@ import React, { useState } from 'react'
 import PropTypes from 'prop-types';
 import {
   Card,
-  CardText,
+  CardTitle,
   CardImg,
   CardBody,
-  Button
+  Button,
+  Modal,
+  ModalHeader,
+  ModalBody,
+  ModalFooter
 } from 'reactstrap';
 import DreamForm from './DreamForm';
 import { deleteDream } from '../data/Dreamdata';
 
 export function DreamCard({ setAllDreams, ...dreamInfo }) {
-  const [editing, setEditing] = useState(false);
+  const [modal, setModal] = useState(false);
+  const toggle = () => setModal(!modal);
 
   const handleClick = (buttonType) => {
     switch (buttonType) {
       case 'edit':
-        setEditing((prevState) => !prevState);
+        setModal((prevState) => !prevState);
         break;
       case 'delete':
         deleteDream(dreamInfo.id).then(setAllDreams);
@@ -27,20 +32,28 @@ export function DreamCard({ setAllDreams, ...dreamInfo }) {
   };
 
   return (
-    <div>
-      <Card>
-        <CardBody>
-          <CardText>{dreamInfo.name}</CardText>
+    <div id="cardContainer">
+      <Modal isOpen={modal} toggle={toggle}>
+        <ModalHeader toggle={toggle}>Edit Dream</ModalHeader>
+        <ModalBody>
+          <DreamForm 
+            {...dreamInfo}
+            setModal={setModal}
+            setAllDreams={setAllDreams}
+          />
+        </ModalBody>
+        <ModalFooter>
+          <Button color="secondary" onClick={toggle}>Close</Button>
+        </ModalFooter>
+      </Modal>
+      <Card id='card'>
+        <CardTitle>{dreamInfo.name}</CardTitle>
+          <CardBody>
           <CardImg id='cardImage' src={dreamInfo.image} alt={dreamInfo.name}/>
-        </CardBody>
-          <Button onClick={() => handleClick('edit')}>Edit</Button>
-          <Button onClick={() => handleClick('delete')}>Delete</Button>
-        {editing && <DreamForm 
-          formTitle='Edit Board'
-          {...dreamInfo}
-          setEditing={setEditing}
-          setAllDreams={setAllDreams}
-        />}
+          <br />
+          <Button id='editButton' onClick={() => handleClick('edit')}>Edit</Button>
+          <Button id='deleteButton' onClick={() => handleClick('delete')}>Delete</Button>
+          </CardBody>
       </Card>
     </div>
   )
