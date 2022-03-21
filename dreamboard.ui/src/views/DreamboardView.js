@@ -24,6 +24,7 @@ export function DreamboardView({ allDreams, setAllDreams }) {
           />
           }
         </div>
+        <br />
         <div id='cardDiv'>
           {allDreams.map((dreamInfo) => (
             <DreamCard 

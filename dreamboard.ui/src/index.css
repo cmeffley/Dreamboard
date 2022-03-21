@@ -1,28 +1,19 @@
 body {
   margin: 0;
   background-color: gray !important;
-  border: yellow dashed 5px;
 }
 
-/* .App {
-  margin: 0;
-  height: 100vh;
-  background-color: gray;
-  border: yellow dashed 5px;
-} */
 
 #cardDiv {
   display: flex;
   flex-flow: row wrap;
   justify-content: center;
-  border: solid red 2px;
 }
 
-#cardContainer {
-  /* width: 50%; */
-  /* height: 50%; */
-  border: solid green 3px;
-}
+/* #cardContainer {
+  width: 50%;
+  height: 50%;
+} */
 
 #card {
   position: relative;
@@ -33,7 +24,6 @@ body {
   margin: 0 -4rem -4rem -4rem;
   box-shadow: 4px 4px 15px 2px black;
   transition: 0.2s;
-  /* border:fuchsia solid 5px; */
 }
 
 #card:hover {
@@ -44,7 +34,6 @@ body {
 #cardImage {
   height: 100%;
   width: 100%;
-  /* object-fit: cover; */
 }
 
 #editButton {

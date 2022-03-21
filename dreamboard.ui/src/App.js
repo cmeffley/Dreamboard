@@ -9,7 +9,7 @@ function App() {
   useEffect(() => {
     getAllDreams().then(setAllDreams);
   }, []);
-  console.warn(allDreams);
+
   return (
     <div className="App">
       <h1>Dreamboard</h1>
